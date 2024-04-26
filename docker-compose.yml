@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.3
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: MySecr3tPassWord@as2
+      POSTGRES_DB: ChampionshipDB
+    container_name: championshipdb
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
