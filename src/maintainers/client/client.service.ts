@@ -11,6 +11,7 @@ import { Repository } from 'typeorm';
 import { Client } from './entities/client.entity';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
+import { PaginationDto } from '../../common/dto/pagination.dto';
 
 @Injectable()
 export class ClientService {
@@ -21,8 +22,12 @@ export class ClientService {
     private readonly clientRepository: Repository<Client>,
   ) {}
 
-  async findAll() {
-    return this.clientRepository.find();
+  async findAll(paginationDto: PaginationDto) {
+    const { limit = 10, offset = 0 } = paginationDto;
+    return this.clientRepository.find({
+      skip: offset,
+      take: limit,
+    });
   }
 
   async create(createClientDto: CreateClientDto): Promise<Client> {
