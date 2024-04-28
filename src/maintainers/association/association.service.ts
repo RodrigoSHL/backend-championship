@@ -1,11 +1,36 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAssociationDto } from './dto/create-association.dto';
 import { UpdateAssociationDto } from './dto/update-association.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Association } from './entities/association.entity';
+import { Repository } from 'typeorm';
+import { Client } from '../client/entities/client.entity';
 
 @Injectable()
 export class AssociationService {
-  create(createAssociationDto: CreateAssociationDto) {
-    return 'This action adds a new association';
+  constructor(
+    @InjectRepository(Association)
+    private associationsRepository: Repository<Association>,
+    @InjectRepository(Client)
+    private clientsRepository: Repository<Client>,
+  ) {}
+
+  async create(
+    createAssociationDto: CreateAssociationDto,
+  ): Promise<Association> {
+    const client = await this.clientsRepository.findOne({
+      where: { id: createAssociationDto.client },
+    });
+    if (!client) {
+      throw new NotFoundException('Client not found');
+    }
+
+    const association = this.associationsRepository.create({
+      ...createAssociationDto,
+      client,
+    });
+
+    return this.associationsRepository.save(association);
   }
 
   findAll() {
