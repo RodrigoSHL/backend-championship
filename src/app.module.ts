@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientModule } from './maintainers/client/client.module';
 import { AssociationModule } from './maintainers/association/association.module';
 import { CommonModule } from './common/common.module';
+import { DivisionModule } from './maintainers/division/division.module';
 
 @Module({
   imports: [
@@ -25,6 +26,8 @@ import { CommonModule } from './common/common.module';
     AssociationModule,
 
     CommonModule,
+
+    DivisionModule,
   ],
 })
 export class AppModule {}
