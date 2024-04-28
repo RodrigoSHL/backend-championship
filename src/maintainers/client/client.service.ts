@@ -1,4 +1,3 @@
-// client.service.ts
 import {
   BadRequestException,
   Injectable,
@@ -12,6 +11,7 @@ import { Client } from './entities/client.entity';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { PaginationDto } from '../../common/dto/pagination.dto';
+import { validate as isUUID } from 'uuid';
 
 @Injectable()
 export class ClientService {
@@ -45,18 +45,39 @@ export class ClientService {
   }
 
   async findOne(term: string) {
-    const client = await this.clientRepository.findOneBy({ id: term });
+    let client: Client;
+    console.log('term', term);
+    if (isUUID(term)) {
+      client = await this.clientRepository.findOneBy({ id: term });
+    } else {
+      const queryBuilder = this.clientRepository.createQueryBuilder();
+      client = await queryBuilder
+        .where('UPPER(name) =:name or email =:email', {
+          name: term.toUpperCase(),
+          email: term.toLowerCase(),
+        })
+        .getOne();
+    }
+
     if (!client) throw new NotFoundException(`Product with ${term} not found`);
 
     return client;
   }
 
-  async update(id: string, updateClientDto: UpdateClientDto): Promise<Client> {
-    const client = await this.findOne(id);
-    client.name = updateClientDto.name;
-    client.email = updateClientDto.email;
-    client.updatedAt = new Date();
-    return this.clientRepository.save(client);
+  async update(id: string, updateClientDto: UpdateClientDto) {
+    const client = await this.clientRepository.preload({
+      id: id,
+      ...updateClientDto,
+    });
+
+    if (!client) throw new NotFoundException(`Client with id: ${id} not found`);
+
+    try {
+      await this.clientRepository.save(client);
+      return client;
+    } catch (error) {
+      this.handleDBExceptions(error);
+    }
   }
 
   async remove(id: string) {
