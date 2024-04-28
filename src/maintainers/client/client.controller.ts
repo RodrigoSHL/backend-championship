@@ -4,11 +4,11 @@ import {
   Get,
   Post,
   Body,
-  Put,
   Param,
   Delete,
-  ParseUUIDPipe,
   Query,
+  Patch,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
@@ -29,14 +29,14 @@ export class ClientController {
     return this.clientService.findAll(paginationDto);
   }
 
-  @Get(':id')
-  async findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.clientService.findOne(id);
+  @Get(':term')
+  async findOne(@Param('term') term: string) {
+    return this.clientService.findOne(term);
   }
 
-  @Put(':id')
+  @Patch(':id')
   async update(
-    @Param('id') id: string,
+    @Param('id', ParseUUIDPipe) id: string,
     @Body() updateClientDto: UpdateClientDto,
   ) {
     return this.clientService.update(id, updateClientDto);
