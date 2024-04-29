@@ -19,24 +19,16 @@ export class ClientService {
 
   constructor(
     @InjectRepository(Client)
-    private readonly clientRepository: Repository<Client>,
+    private readonly clientsRepository: Repository<Client>,
   ) {}
-
-  async findAll(paginationDto: PaginationDto) {
-    const { limit = 10, offset = 0 } = paginationDto;
-    return this.clientRepository.find({
-      skip: offset,
-      take: limit,
-    });
-  }
 
   async create(createClientDto: CreateClientDto): Promise<Client> {
     try {
       const date = new Date();
       createClientDto.createdAt = date;
       createClientDto.email = createClientDto.email.toLowerCase().trim();
-      const client = this.clientRepository.create(createClientDto);
-      await this.clientRepository.save(client);
+      const client = this.clientsRepository.create(createClientDto);
+      await this.clientsRepository.save(client);
       return client;
     } catch (error) {
       console.log(error);
@@ -46,11 +38,10 @@ export class ClientService {
 
   async findOne(term: string) {
     let client: Client;
-    console.log('term', term);
     if (isUUID(term)) {
-      client = await this.clientRepository.findOneBy({ id: term });
+      client = await this.clientsRepository.findOneBy({ id: term });
     } else {
-      const queryBuilder = this.clientRepository.createQueryBuilder();
+      const queryBuilder = this.clientsRepository.createQueryBuilder();
       client = await queryBuilder
         .where('UPPER(name) =:name or email =:email', {
           name: term.toUpperCase(),
@@ -64,8 +55,16 @@ export class ClientService {
     return client;
   }
 
+  async findAll(paginationDto: PaginationDto) {
+    const { limit = 10, offset = 0 } = paginationDto;
+    return this.clientsRepository.find({
+      skip: offset,
+      take: limit,
+    });
+  }
+
   async update(id: string, updateClientDto: UpdateClientDto) {
-    const client = await this.clientRepository.preload({
+    const client = await this.clientsRepository.preload({
       id: id,
       ...updateClientDto,
     });
@@ -73,7 +72,7 @@ export class ClientService {
     if (!client) throw new NotFoundException(`Client with id: ${id} not found`);
 
     try {
-      await this.clientRepository.save(client);
+      await this.clientsRepository.save(client);
       return client;
     } catch (error) {
       this.handleDBExceptions(error);
@@ -82,7 +81,7 @@ export class ClientService {
 
   async remove(id: string) {
     const client = await this.findOne(id);
-    await this.clientRepository.remove(client);
+    await this.clientsRepository.remove(client);
     return client;
   }
 

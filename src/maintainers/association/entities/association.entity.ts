@@ -10,8 +10,8 @@ import {
 
 @Entity()
 export class Association {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name: string;
@@ -24,6 +24,18 @@ export class Association {
 
   @Column()
   president: string;
+
+  @Column({
+    type: 'timestamp',
+    nullable: true,
+  })
+  createdAt: Date;
+
+  @Column({
+    type: 'timestamp',
+    nullable: true,
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => Client, (client) => client.associations)
   client: Client;

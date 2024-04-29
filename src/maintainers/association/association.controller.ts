@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AssociationService } from './association.service';
 import { CreateAssociationDto } from './dto/create-association.dto';
 import { UpdateAssociationDto } from './dto/update-association.dto';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Controller('association')
 export class AssociationController {
@@ -21,13 +23,13 @@ export class AssociationController {
   }
 
   @Get()
-  findAll() {
-    return this.associationService.findAll();
+  findAll(@Query() paginationDto: PaginationDto) {
+    return this.associationService.findAll(paginationDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.associationService.findOne(+id);
+  @Get(':term')
+  findOne(@Param('term') term: string) {
+    return this.associationService.findOne(term);
   }
 
   @Patch(':id')
@@ -35,11 +37,11 @@ export class AssociationController {
     @Param('id') id: string,
     @Body() updateAssociationDto: UpdateAssociationDto,
   ) {
-    return this.associationService.update(+id, updateAssociationDto);
+    return this.associationService.update(id, updateAssociationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.associationService.remove(+id);
+    return this.associationService.remove(id);
   }
 }

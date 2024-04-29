@@ -1,4 +1,4 @@
-import { IsString, IsInt } from 'class-validator';
+import { IsString, IsInt, IsOptional } from 'class-validator';
 
 export class CreateAssociationDto {
   @IsString()
@@ -12,6 +12,12 @@ export class CreateAssociationDto {
 
   @IsString()
   president: string;
+
+  @IsOptional()
+  createdAt?: Date;
+
+  @IsOptional()
+  updateAt?: Date;
 
   @IsString()
   client: string;
