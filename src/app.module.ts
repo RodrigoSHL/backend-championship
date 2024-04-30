@@ -5,6 +5,7 @@ import { ClientModule } from './maintainers/client/client.module';
 import { AssociationModule } from './maintainers/association/association.module';
 import { CommonModule } from './common/common.module';
 import { DivisionModule } from './maintainers/division/division.module';
+import { TeamModule } from './maintainers/team/team.module';
 
 @Module({
   imports: [
@@ -28,6 +29,8 @@ import { DivisionModule } from './maintainers/division/division.module';
     CommonModule,
 
     DivisionModule,
+
+    TeamModule,
   ],
 })
 export class AppModule {}
