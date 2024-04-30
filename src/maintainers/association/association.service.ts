@@ -29,7 +29,7 @@ export class AssociationService {
     createAssociationDto: CreateAssociationDto,
   ): Promise<Association> {
     const client = await this.clientsRepository.findOne({
-      where: { id: createAssociationDto.client },
+      where: { id: createAssociationDto.clientId },
     });
     if (!client) {
       throw new NotFoundException('Client not found');

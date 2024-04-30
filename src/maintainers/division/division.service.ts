@@ -50,7 +50,7 @@ export class DivisionService {
 
   async findAll(paginationDto: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
-    return this.associationsRepository.find({
+    return this.divisionsRepository.find({
       skip: offset,
       take: limit,
     });
