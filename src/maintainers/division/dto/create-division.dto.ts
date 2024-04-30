@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateDivisionDto {
   @IsNotEmpty()
@@ -20,6 +20,6 @@ export class CreateDivisionDto {
   updateAt?: Date;
 
   @IsNotEmpty()
-  @IsInt()
+  @IsString()
   associationId: string;
 }
