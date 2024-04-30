@@ -86,9 +86,9 @@ export class AssociationService {
       throw new NotFoundException('Association not found');
     }
 
-    if (updateAssociationDto.client) {
+    if (updateAssociationDto.clientId) {
       const client = await this.clientsRepository.findOne({
-        where: { id: updateAssociationDto.client },
+        where: { id: updateAssociationDto.clientId },
       });
       if (!client) {
         throw new NotFoundException('Client not found');

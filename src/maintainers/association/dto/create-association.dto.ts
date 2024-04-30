@@ -20,5 +20,5 @@ export class CreateAssociationDto {
   updateAt?: Date;
 
   @IsString()
-  client: string;
+  clientId: string;
 }
