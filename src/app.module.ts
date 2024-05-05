@@ -6,6 +6,7 @@ import { AssociationModule } from './maintainers/association/association.module'
 import { CommonModule } from './common/common.module';
 import { DivisionModule } from './maintainers/division/division.module';
 import { TeamModule } from './maintainers/team/team.module';
+import { CategoryModule } from './maintainers/category/category.module';
 
 @Module({
   imports: [
@@ -31,6 +32,8 @@ import { TeamModule } from './maintainers/team/team.module';
     DivisionModule,
 
     TeamModule,
+
+    CategoryModule,
   ],
 })
 export class AppModule {}

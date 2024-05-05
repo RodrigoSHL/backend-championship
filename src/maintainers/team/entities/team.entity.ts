@@ -1,5 +1,13 @@
+import { Category } from 'src/maintainers/category/entities/category.entity';
 import { Division } from 'src/maintainers/division/entities/division.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Team {
@@ -29,4 +37,8 @@ export class Team {
 
   @ManyToOne(() => Division, (division) => division.teams)
   division: Division;
+
+  @ManyToMany(() => Category)
+  @JoinTable()
+  category: Category[];
 }
