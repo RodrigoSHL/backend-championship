@@ -7,6 +7,7 @@ import { CommonModule } from './common/common.module';
 import { DivisionModule } from './maintainers/division/division.module';
 import { TeamModule } from './maintainers/team/team.module';
 import { CategoryModule } from './maintainers/category/category.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -34,6 +35,8 @@ import { CategoryModule } from './maintainers/category/category.module';
     TeamModule,
 
     CategoryModule,
+
+    AuthModule,
   ],
 })
 export class AppModule {}
