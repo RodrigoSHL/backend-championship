@@ -1,5 +1,12 @@
+import { User } from '../../../auth/entities/user.entity';
 import { Association } from 'src/maintainers/association/entities/association.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Client {
@@ -29,6 +36,9 @@ export class Client {
     nullable: true,
   })
   updatedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.clients, { eager: true })
+  user: User;
 
   @OneToMany(() => Association, (association) => association.client)
   associations: Association[];
