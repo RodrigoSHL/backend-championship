@@ -1,8 +1,10 @@
+import { Client } from 'src/maintainers/client/entities/client.entity';
 import {
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -24,7 +26,7 @@ export class User {
   @Column('text')
   fullName: string;
 
-  @Column('text', {
+  @Column('bool', {
     default: true,
   })
   isActive: boolean;
@@ -46,6 +48,9 @@ export class User {
     nullable: true,
   })
   updatedAt: Date;
+
+  @OneToMany(() => Client, (client) => client.user)
+  clients: Client[];
 
   @BeforeInsert()
   checkFieldsBeforeInsert() {

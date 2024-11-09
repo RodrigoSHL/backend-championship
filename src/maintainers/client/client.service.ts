@@ -12,6 +12,7 @@ import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { PaginationDto } from '../../common/dto/pagination.dto';
 import { validate as isUUID } from 'uuid';
+import { User } from '../../auth/entities/user.entity';
 
 @Injectable()
 export class ClientService {
@@ -22,12 +23,16 @@ export class ClientService {
     private readonly clientsRepository: Repository<Client>,
   ) {}
 
-  async create(createClientDto: CreateClientDto): Promise<Client> {
+  async create(createClientDto: CreateClientDto, user: User): Promise<Client> {
     try {
       const date = new Date();
       createClientDto.createdAt = date;
       createClientDto.email = createClientDto.email.toLowerCase().trim();
-      const client = this.clientsRepository.create(createClientDto);
+      const { ...clientDetails } = createClientDto;
+      const client = this.clientsRepository.create({
+        ...clientDetails,
+        user: user,
+      });
       await this.clientsRepository.save(client);
       return client;
     } catch (error) {
@@ -63,9 +68,10 @@ export class ClientService {
     });
   }
 
-  async update(id: string, updateClientDto: UpdateClientDto) {
+  async update(id: string, updateClientDto: UpdateClientDto, user: User) {
     const client = await this.clientsRepository.preload({
       id: id,
+      user: user,
       ...updateClientDto,
     });
 

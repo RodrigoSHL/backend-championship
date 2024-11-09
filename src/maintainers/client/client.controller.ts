@@ -13,15 +13,22 @@ import {
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { PaginationDto } from '../../common/dto/pagination.dto';
+import { Auth, GetUser } from '../../auth/decorators';
+import { ValidRoles } from '../../auth/interfaces';
+import { User } from '../../auth/entities/user.entity';
 
 @Controller('clients')
 export class ClientController {
   constructor(private readonly clientService: ClientService) {}
 
   @Post()
-  async create(@Body() createClientDto: CreateClientDto) {
-    return this.clientService.create(createClientDto);
+  @Auth(ValidRoles.admin)
+  async create(
+    @Body() createClientDto: CreateClientDto,
+    @GetUser() user: User,
+  ) {
+    return this.clientService.create(createClientDto, user);
   }
 
   @Get()
@@ -35,14 +42,17 @@ export class ClientController {
   }
 
   @Patch(':id')
+  @Auth(ValidRoles.admin)
   async update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() updateClientDto: UpdateClientDto,
+    @GetUser() user: User,
   ) {
-    return this.clientService.update(id, updateClientDto);
+    return this.clientService.update(id, updateClientDto, user);
   }
 
   @Delete(':id')
+  @Auth(ValidRoles.admin)
   async remove(@Param('id') id: string) {
     return this.clientService.remove(id);
   }
