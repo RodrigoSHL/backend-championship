@@ -1,14 +1,39 @@
 version: '3'
 
 services:
-  db:
+  postgres_db:
     image: postgres:14.3
     restart: always
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       POSTGRES_PASSWORD: MySecr3tPassWord@as2
       POSTGRES_DB: ChampionshipDB
     container_name: championshipdb
     volumes:
       - ./postgres:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nestjs-app
+    environment:
+      DB_PASSWORD: MySecr3tPassWord@as2
+      DB_NAME: ChampionshipDB
+      DB_HOST: postgres_db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      JWT_SECRET: mySecretPassYWhatHap
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres_db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
