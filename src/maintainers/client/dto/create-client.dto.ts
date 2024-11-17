@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsEmail,
   IsIn,
@@ -23,10 +24,12 @@ export class CreateClientDto {
   clientId: string;
 
   @IsOptional()
+  @Type(() => Date)
   createdAt?: Date;
 
   @IsOptional()
-  updateAt?: Date;
+  @Type(() => Date)
+  updatedAt?: Date;
 
   @IsIn(['active', 'inactive'])
   status: string;

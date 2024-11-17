@@ -17,7 +17,7 @@ export class CreateDivisionDto {
   createdAt?: Date;
 
   @IsOptional()
-  updateAt?: Date;
+  updatedAt?: Date;
 
   @IsNotEmpty()
   @IsString()
