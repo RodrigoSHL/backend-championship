@@ -12,6 +12,7 @@ import { TeamService } from './team.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { CreateManyTeamsDto } from './dto/create-many.dto';
 
 @Controller('team')
 export class TeamController {
@@ -20,6 +21,11 @@ export class TeamController {
   @Post()
   create(@Body() createTeamDto: CreateTeamDto) {
     return this.teamService.create(createTeamDto);
+  }
+
+  @Post('bulk')
+  async createMany(@Body() createManyTeamsDto: CreateManyTeamsDto) {
+    return this.teamService.createMany(createManyTeamsDto.teams);
   }
 
   @Get()

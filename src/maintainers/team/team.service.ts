@@ -48,6 +48,36 @@ export class TeamService {
     }
   }
 
+  async createMany(createTeamsDto: CreateTeamDto[]): Promise<Team[]> {
+    const createdTeams: Team[] = [];
+
+    for (const createTeamDto of createTeamsDto) {
+      const division = await this.divisionsRepository.findOne({
+        where: { id: createTeamDto.divisionId },
+      });
+
+      if (!division) {
+        throw new NotFoundException(
+          `Division with id ${createTeamDto.divisionId} not found`,
+        );
+      }
+
+      try {
+        const date = new Date();
+        createTeamDto.createdAt = date;
+        const team = this.teamsRepository.create({
+          ...createTeamDto,
+          division,
+        });
+        createdTeams.push(await this.teamsRepository.save(team));
+      } catch (error) {
+        this.handleDBExceptions(error);
+      }
+    }
+
+    return createdTeams;
+  }
+
   async findAll(paginationDto: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto;
     return this.teamsRepository.find({
