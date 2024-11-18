@@ -8,6 +8,8 @@ import { DivisionModule } from './maintainers/division/division.module';
 import { TeamModule } from './maintainers/team/team.module';
 import { CategoryModule } from './maintainers/category/category.module';
 import { AuthModule } from './auth/auth.module';
+import { ChampionshipModule } from './championship/championship.module';
+import { MatchModule } from './match/match.module';
 
 @Module({
   imports: [
@@ -42,6 +44,10 @@ import { AuthModule } from './auth/auth.module';
     CategoryModule,
 
     AuthModule,
+
+    ChampionshipModule,
+
+    MatchModule,
   ],
 })
 export class AppModule {}

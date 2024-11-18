@@ -1,0 +1,46 @@
+src/
+├── auth/                     # Módulo para autenticación y autorización
+│   ├── auth.controller.ts
+│   ├── auth.service.ts
+│   ├── dto/
+│   ├── entities/
+│   └── auth.module.ts
+├── common/                   # Código compartido (helpers, pipes, interceptors)
+│   ├── dto/
+│   ├── filters/
+│   ├── guards/
+│   └── interceptors/
+├── maintainers/              # Mantenedores básicos del sistema
+│   ├── association/
+│   ├── category/
+│   ├── client/
+│   ├── division/
+│   ├── team/
+├── championship/             # Módulo para gestionar campeonatos
+│   ├── championship.controller.ts
+│   ├── championship.service.ts
+│   ├── dto/
+│   ├── entities/
+│   └── championship.module.ts
+├── match/                    # Módulo para gestionar partidos
+│   ├── match.controller.ts
+│   ├── match.service.ts
+│   ├── dto/
+│   ├── entities/
+│   └── match.module.ts
+├── player/                   # Módulo para gestionar jugadores
+│   ├── player.controller.ts
+│   ├── player.service.ts
+│   ├── dto/
+│   ├── entities/
+│   └── player.module.ts
+├── history/                  # Módulo para gestionar historial (campeonatos, resultados)
+│   ├── history.controller.ts
+│   ├── history.service.ts
+│   ├── dto/
+│   ├── entities/
+│   └── history.module.ts
+├── app.controller.ts
+├── app.module.ts
+├── app.service.ts
+└── main.ts
