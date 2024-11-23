@@ -1,0 +1,1030 @@
+{
+	"info": {
+		"_postman_id": "7fd07b78-aa60-4c2e-8982-724d867b5b13",
+		"name": "Championship APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2802945",
+		"_collection_link": "https://dark-trinity-111287.postman.co/workspace/Personal-Workspace~fe532e0e-b766-4f8f-ab3b-6a785ebfd923/collection/2802945-7fd07b78-aa60-4c2e-8982-724d867b5b13?action=share&source=collection_link&creator=2802945"
+	},
+	"item": [
+		{
+			"name": "maintainers",
+			"item": [
+				{
+					"name": "clients",
+					"item": [
+						{
+							"name": "get all",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE5MTA3NCwiZXhwIjoxNzMxMjc3NDc0fQ.BAxi3yoQLjYm4sEvEm1TeGomliiyhzLlbjrC42UG3fQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/clients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"clients"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/clients/a.h@hak.cl",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"clients",
+										"a.h@hak.cl"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmNiZGRmLTQ3ZjQtNGJiMS05MTMyLTcwNWNlNmM2YWVhZiIsImlhdCI6MTczMTgxNTYzNSwiZXhwIjoxNzMxOTAyMDM1fQ.1kye7uRPJSLxeHu28Ftq76wEyjyg9Bp0lgye4iRIxrM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"John Doe Inc.\",\n  \"email\": \"contact@johndoe.com\",\n  \"clientId\": \"client123\",\n  \"status\": \"active\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/clients",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE5MTI4OCwiZXhwIjoxNzMxMjc3Njg4fQ.iCPEItVsncMXkgTZhoOJAEyH4wxASPLkUfwtUyp943g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"Rodrigo Catalán\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/clients/6c9ec710-6044-4231-b590-76ce45453cbc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"clients",
+										"6c9ec710-6044-4231-b590-76ce45453cbc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/clients/4ae44427-2270-4b53-bf33-e46096537ca4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"clients",
+										"4ae44427-2270-4b53-bf33-e46096537ca4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "associations",
+					"item": [
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/association",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"association"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Asociación de Fútbol Profesional\",\n  \"location\": \"Santiago, Chile\",\n  \"foundingYear\": 1895,\n  \"president\": \"Juan Pérez\",\n  \"clientId\": \"c68922cf-6692-4f54-a71e-bd7f6c1043ce\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/association",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"association"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Association 0\",\n  \"location\": \"Association 0\",\n  \"foundingYear\": 2222,\n  \"president\": \"President Name 0\",\n  \"client\": \"8420776c-7ed1-4071-9546-3d4338905ff2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/association/63fe8148-ad08-4abb-8271-42b389f8d487",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"association",
+										"63fe8148-ad08-4abb-8271-42b389f8d487"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/association/63fe8148-ad08-4abb-8271-42b389f8d487",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"association",
+										"63fe8148-ad08-4abb-8271-42b389f8d487"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "divisions",
+					"item": [
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/division",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"division"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/division/e7e9a88d-e078-4c55-868e-a6da66d154b3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"division",
+										"e7e9a88d-e078-4c55-868e-a6da66d154b3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Primera División\",\n  \"level\": \"1\",\n  \"description\": \"Máxima categoría del fútbol chileno\",\n  \"associationId\": \"6006e175-ca76-43b5-bdce-e1cadee4e195\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/division",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"division"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Segunda División\",\n  \"level\": \"2\",\n  \"description\" : \"Segunda división fútbol\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/division/15d0cefb-fbbf-4109-ae11-3ac722244803",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"division",
+										"15d0cefb-fbbf-4109-ae11-3ac722244803"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "team",
+					"item": [
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/team",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/team/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Alianza Recreo\",\n  \"shield\": \"Shield URL\",\n  \"state\": true,\n  \"divisionId\": \"15d0cefb-fbbf-4109-ae11-3ac722244803\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/team",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create many",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"teams\": [\n    {\n      \"name\": \"Colo-Colo\",\n      \"shield\": \"https://example.com/shields/colo-colo.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Universidad de Chile\",\n      \"shield\": \"https://example.com/shields/u-de-chile.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Universidad Católica\",\n      \"shield\": \"https://example.com/shields/u-catolica.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Audax Italiano\",\n      \"shield\": \"https://example.com/shields/audax-italiano.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Cobresal\",\n      \"shield\": \"https://example.com/shields/cobresal.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Everton\",\n      \"shield\": \"https://example.com/shields/everton.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Huachipato\",\n      \"shield\": \"https://example.com/shields/huachipato.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Ñublense\",\n      \"shield\": \"https://example.com/shields/nublense.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Palestino\",\n      \"shield\": \"https://example.com/shields/palestino.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Curicó Unido\",\n      \"shield\": \"https://example.com/shields/curico-unido.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Unión Española\",\n      \"shield\": \"https://example.com/shields/union-espanola.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Coquimbo Unido\",\n      \"shield\": \"https://example.com/shields/coquimbo-unido.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Deportes La Serena\",\n      \"shield\": \"https://example.com/shields/deportes-la-serena.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Deportes Antofagasta\",\n      \"shield\": \"https://example.com/shields/deportes-antofagasta.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"O'Higgins\",\n      \"shield\": \"https://example.com/shields/ohiggins.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    },\n    {\n      \"name\": \"Magallanes\",\n      \"shield\": \"https://example.com/shields/magallanes.png\",\n      \"state\": true,\n      \"divisionId\": \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n    }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/team/bulk",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team",
+										"bulk"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"OROMPELLO\",\n  \"shield\" : \"Escudo OROMPELLO\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/team/aa30cffd-3541-4651-aa1f-019e31a922fe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team",
+										"aa30cffd-3541-4651-aa1f-019e31a922fe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/team/dcc85250-ccbc-40d1-a69d-dc5bf1888e55",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"team",
+										"dcc85250-ccbc-40d1-a69d-dc5bf1888e55"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/category/3e8c162f-127c-40a1-b283-d6f13475f56c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"3e8c162f-127c-40a1-b283-d6f13475f56c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Super Senior\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"adultos\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/category/fcd4294c-d668-4e98-816a-01385e69daf8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"fcd4294c-d668-4e98-816a-01385e69daf8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/category/3e8c162f-127c-40a1-b283-d6f13475f56c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"category",
+										"3e8c162f-127c-40a1-b283-d6f13475f56c"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Password123$$\",\n    \"email\": \"user@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"User Name\",\n    \"password\": \"Password123$$\",\n    \"email\": \"user@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "private",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE4MTc2MSwiZXhwIjoxNzMxMjY4MTYxfQ.nwLAG32s9rb25_z-f7QZgAxfRc_-T2zdquyPB4ZZh2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/private",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"private"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-auth-status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE4MTc2MSwiZXhwIjoxNzMxMjY4MTYxfQ.nwLAG32s9rb25_z-f7QZgAxfRc_-T2zdquyPB4ZZh2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/check-status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"check-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "private 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE4OTMzNSwiZXhwIjoxNzMxMjc1NzM1fQ.yIdKv1aF-tVJWeswMdkEq0FPu1NljbScT7giIcD1cQQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/private2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"private2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "private 3",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkzODFhMGY0LWVhZDktNDdlZC1iNjY2LTZjMmM1OTE4N2U3NiIsImlhdCI6MTczMTE4MTc2MSwiZXhwIjoxNzMxMjY4MTYxfQ.nwLAG32s9rb25_z-f7QZgAxfRc_-T2zdquyPB4ZZh2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/private3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"private3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "championship",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Campeonato Nacional\",\n  \"startDate\": \"2024-01-15\",\n  \"endDate\": \"2024-12-15\",\n  \"description\": \"El campeonato de primera división de Chile\",\n  \"divisions\": [\n    \"f5227316-b043-452c-b30f-a83b32ba6b4f\"\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/championships",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"championships"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "match",
+			"item": [
+				{
+					"name": "generate championship",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"startDate\": \"2024-01-15T00:00:00.000Z\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/matches/9d299ea6-66bc-4210-b65f-a68cb94a362a/generate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"matches",
+								"9d299ea6-66bc-4210-b65f-a68cb94a362a",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get table",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/matches/championship/9d299ea6-66bc-4210-b65f-a68cb94a362a/standings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"matches",
+								"championship",
+								"9d299ea6-66bc-4210-b65f-a68cb94a362a",
+								"standings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
