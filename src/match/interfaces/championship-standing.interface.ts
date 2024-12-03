@@ -1,6 +1,7 @@
 export interface ChampionshipStanding {
   teamId: string;
   teamName: string;
+  shield: string;
   matchesPlayed: number;
   wins: number;
   draws: number;

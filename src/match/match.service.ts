@@ -101,12 +101,14 @@ export class MatchService {
         standings[homeTeam.id] = this.initializeTeamStanding(
           homeTeam.id,
           homeTeam.name,
+          homeTeam.shield,
         );
       }
       if (!standings[awayTeam.id]) {
         standings[awayTeam.id] = this.initializeTeamStanding(
           awayTeam.id,
           awayTeam.name,
+          awayTeam.shield,
         );
       }
 
@@ -128,10 +130,12 @@ export class MatchService {
   private initializeTeamStanding(
     teamId: string,
     teamName: string,
+    shield: string,
   ): ChampionshipStanding {
     return {
       teamId,
       teamName,
+      shield,
       matchesPlayed: 0,
       wins: 0,
       draws: 0,
